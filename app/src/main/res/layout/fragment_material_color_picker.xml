@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:showIn="@layout/activity_main">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialDialogPickerSquareBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="12dp"
+        android:text="Material Color Picker"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialDialogPickerCircleBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius="30dp"
+        android:padding="12dp"
+        android:text="Material Color Picker"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialBottomSheetDialogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius="30dp"
+        android:padding="12dp"
+        android:text="Material Bottomsheet Color Picker"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialPreDefinedColorPickerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius="30dp"
+        android:padding="12dp"
+        android:text="Material PreDefined Color Picker"/>
+
+</LinearLayout>

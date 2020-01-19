@@ -1,0 +1,11 @@
+<resources>
+
+    <dimen name="color_card_square_radius">4dp</dimen>
+
+    <dimen name="color_picker_view_size">240dp</dimen>
+
+    <dimen name="color_card_size">48dp</dimen>
+    <dimen name="color_card_radius">24dp</dimen>
+    <dimen name="color_card_margin">6dp</dimen>
+
+</resources>

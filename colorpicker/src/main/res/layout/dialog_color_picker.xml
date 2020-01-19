@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.github.dhaval2404.colorpicker.ColorPickerView
+        android:id="@+id/colorPicker"
+        android:layout_width="@dimen/color_picker_view_size"
+        android:layout_height="@dimen/color_picker_view_size"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:minWidth="210dp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/colorView"
+        android:layout_width="@dimen/color_card_size"
+        android:layout_height="@dimen/color_card_size"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardBackgroundColor="@color/grey_500"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardPreventCornerOverlap="true"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/recentColorTitleTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:textColor="@color/grey_800"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="@string/title_recent_colors"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recentColorsRV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:spanCount="5"
+        tools:itemCount="10"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        tools:listitem="@layout/adapter_material_color_picker"
+        android:layout_gravity="center_horizontal"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+</LinearLayout>
