@@ -41,7 +41,15 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 	implementation 'com.github.dhaval2404:colorpicker:1.0'
 	```
 
-2. The **ColorPicker** configuration is created using the builder pattern.
+2. Enable `databinding` in the build.gradle file
+
+    ```groovy
+    dataBinding {
+        enabled true
+    }
+    ```
+
+4. The **ColorPicker** configuration is created using the builder pattern.
 
 	```kotlin
     ColorPickerDialog
@@ -54,7 +62,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
         .show()
     ```
 
- 3. The **MaterialColorPicker** configuration is created using the builder pattern.
+5. The **MaterialColorPicker** configuration is created using the builder pattern.
 
 	```kotlin
     MaterialColorPickerDialog
