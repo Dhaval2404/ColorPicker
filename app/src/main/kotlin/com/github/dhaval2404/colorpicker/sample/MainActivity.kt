@@ -1,7 +1,6 @@
 package com.github.dhaval2404.colorpicker.sample
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -37,12 +36,11 @@ class MainActivity : AppCompatActivity() {
         }.attach()
     }
 
-    fun openGithubRepo(view: View) {
+    fun openGithubRepo() {
         IntentUtil.openURL(this, GITHUB_REPOSITORY)
     }
 
     class ViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
-
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> ColorPickerFragment()
