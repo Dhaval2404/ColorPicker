@@ -54,7 +54,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
         .show()
     ```
 
- 3. The **MaterialColorPicker** configuration is created using the builder pattern.
+3. The **MaterialColorPicker** configuration is created using the builder pattern.
 
 	```kotlin
     MaterialColorPickerDialog
