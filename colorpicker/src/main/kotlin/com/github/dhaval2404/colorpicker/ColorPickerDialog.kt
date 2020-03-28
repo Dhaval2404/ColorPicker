@@ -214,7 +214,7 @@ class ColorPickerDialog private constructor(
         colorView.setCardBackgroundColor(initialColor)
 
         colorPicker.setColor(initialColor)
-        colorPicker.setColorListener { color, colorHex ->
+        colorPicker.setColorListener { color, _ ->
             colorView.setCardBackgroundColor(color)
         }
 

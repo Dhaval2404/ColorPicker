@@ -44,7 +44,7 @@ class ColorPickerFragment : Fragment() {
                 .Builder(activity!!) // Pass Activity Instance
                 .setColorShape(ColorShape.SQAURE) // Or ColorShape.CIRCLE
                 .setDefaultColor(mColor) // Pass Default Color
-                .setColorListener { color, colorHex ->
+                .setColorListener { color, _ ->
                     mColor = color
                     colorPickerView.setColor(color)
                     setButtonBackground(colorPickerBtn, color)
