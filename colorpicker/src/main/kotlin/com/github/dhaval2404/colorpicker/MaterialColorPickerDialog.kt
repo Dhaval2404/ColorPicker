@@ -249,7 +249,7 @@ class MaterialColorPickerDialog private constructor(
      */
     fun show() {
         // Create Dialog Instance
-        val dialog = AlertDialog.Builder(context)
+        val dialog = AlertDialog.Builder(context, R.style.DialogStyle)
             .setTitle(title)
             .setNegativeButton(negativeButton, null)
 
