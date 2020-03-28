@@ -80,6 +80,15 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
       }
       .show()
     ```
+ *  You can change the color or Positive and Negative Button Color. Add Following parameters in your **colors.xml** file.
+
+     ```xml
+     <resources>
+         <!-- Here you can add color of your choice  -->
+         <color name="positiveButtonTextColor">@color/colorAccent</color>
+         <color name="negativeButtonTextColor">@color/colorAccent</color>
+     </resources>
+     ```
 
  *  You can provide predefine colors for the MaterialColorPicker
 
