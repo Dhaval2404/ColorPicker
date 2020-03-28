@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="material_dialog_title">Farbe wählen</string>
+    <string name="title_recent_colors">Letzte Farben</string>
+</resources>
