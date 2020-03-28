@@ -38,7 +38,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 1. Gradle dependency:
 
 	```groovy
-	implementation 'com.github.dhaval2404:colorpicker:1.0'
+	implementation 'com.github.dhaval2404:colorpicker:1.1'
 	```
 
 2. The **ColorPicker** configuration is created using the builder pattern.
@@ -137,6 +137,10 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
   * Sample - Android Lollipop 5.0+ (API 21)
 
 # ✔️Changelog
+
+### Version: 1.1
+
+  * Added option to change positive and negative button text color [#2](https://github.com/Dhaval2404/ImagePicker/issues/2)
 
 ### Version: 1.0
 
