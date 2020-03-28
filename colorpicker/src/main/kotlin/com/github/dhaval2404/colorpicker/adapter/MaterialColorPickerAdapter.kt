@@ -1,11 +1,9 @@
 package com.github.dhaval2404.colorpicker.adapter
 
 import android.graphics.Color
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.github.dhaval2404.colorpicker.R
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.util.ColorUtil
 import com.github.dhaval2404.colorpicker.util.setVisibility
@@ -44,18 +42,9 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
 
     override fun getItemCount() = colors.size
 
-    private fun bindAdapter(parent: ViewGroup): View {
-        val inflater = LayoutInflater.from(parent.context)
-        return inflater.inflate(
-            R.layout.adapter_material_color_picker,
-            parent,
-            false
-        )
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialColorViewHolder {
-        val binding = bindAdapter(parent)
-        return MaterialColorViewHolder(binding)
+        val rootView = ColorViewBinding.inflateAdapterItemView(parent)
+        return MaterialColorViewHolder(rootView)
     }
 
     override fun onBindViewHolder(holder: MaterialColorViewHolder, position: Int) {
@@ -66,6 +55,7 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
         RecyclerView.ViewHolder(rootView) {
 
         private val colorView = rootView.colorView
+        private val checkIcon = rootView.checkIcon
 
         init {
             rootView.setOnClickListener {
@@ -85,18 +75,13 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
 
             rootView.tag = position
 
-            colorView.setCardBackgroundColor(Color.parseColor(color))
-            if (colorShape == ColorShape.SQAURE) {
-                colorView.radius = getCardRadius()
-            }
+            ColorViewBinding.setBackgroundColor(colorView, color)
+            ColorViewBinding.setCardRadius(colorView, colorShape)
 
             val isChecked = color == this@MaterialColorPickerAdapter.color
-            rootView.checkIcon.setVisibility(isChecked)
-            rootView.checkIcon.setColorFilter(if (isDarkColor) Color.WHITE else Color.BLACK)
+            checkIcon.setVisibility(isChecked)
+            checkIcon.setColorFilter(if (isDarkColor) Color.WHITE else Color.BLACK)
         }
 
-        private fun getCardRadius(): Float {
-            return colorView.context.resources.getDimension(R.dimen.color_card_square_radius)
-        }
     }
 }
