@@ -14,6 +14,7 @@ import com.github.dhaval2404.colorpicker.listener.ColorListener
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.util.ColorUtil
 import com.github.dhaval2404.colorpicker.util.SharedPref
+import com.github.dhaval2404.colorpicker.util.setButtonTextColor
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.card.MaterialCardView
 
@@ -192,7 +193,7 @@ class ColorPickerDialog private constructor(
     fun show() {
 
         // Create Dialog Instance
-        val dialog = AlertDialog.Builder(context, R.style.ColorPickerDialogTheme)
+        val dialog = AlertDialog.Builder(context)
             .setTitle(title)
             .setNegativeButton(negativeButton, null)
 
@@ -241,6 +242,13 @@ class ColorPickerDialog private constructor(
             sharedPref.addColor(color = colorHex)
         }
 
-        dialog.show()
+        // Create AlertDialog
+        val alertDialog = dialog.create()
+
+        // Show Dialog
+        alertDialog.show()
+
+        // Set Button Text Color
+        alertDialog.setButtonTextColor()
     }
 }
