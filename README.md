@@ -80,7 +80,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
       }
       .show()
     ```
- *  You can change the color or Positive and Negative Button Color. Add Following parameters in your **colors.xml** file.
+ *  You can change the color or Positive and Negative Button Text Color. Add Following parameters in your **colors.xml** file.
 
      ```xml
      <resources>
