@@ -33,7 +33,6 @@ class ColorPickerDialog private constructor(
     val defaultColor: String?,
     var colorShape: ColorShape
 ) {
-
     data class Builder(
         val context: Context,
         var title: String = context.getString(R.string.material_dialog_title),
@@ -190,7 +189,6 @@ class ColorPickerDialog private constructor(
      * Show Color Picker Dialog
      */
     fun show() {
-
         // Create Dialog Instance
         val dialog = AlertDialog.Builder(context)
             .setTitle(title)

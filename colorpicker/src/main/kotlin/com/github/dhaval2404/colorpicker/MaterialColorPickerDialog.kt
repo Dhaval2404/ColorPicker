@@ -33,7 +33,6 @@ class MaterialColorPickerDialog private constructor(
     var colorShape: ColorShape,
     val colors: List<String>? = null
 ) {
-
     data class Builder(
         val context: Context,
         var title: String = context.getString(R.string.material_dialog_title),
@@ -45,7 +44,6 @@ class MaterialColorPickerDialog private constructor(
         var colorShape: ColorShape = ColorShape.CIRCLE,
         var colors: List<String>? = null
     ) {
-
         /**
          * Set Dialog Title
          *

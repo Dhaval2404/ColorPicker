@@ -32,7 +32,6 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
     private var colors: List<String>? = null
 
     companion object {
-
         private const val EXTRA_TITLE = "extra.title"
         private const val EXTRA_POSITIVE_BUTTON = "extra.positive_Button"
         private const val EXTRA_NEGATIVE_BUTTON = "extra.negative_button"
@@ -53,9 +52,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
                 putParcelable(EXTRA_COLOR_SHAPE, dialog.colorShape)
 
                 var list: ArrayList<String>? = null
-                if (dialog.colors != null) {
-                    list = ArrayList(dialog.colors)
-                }
+                if (dialog.colors != null) list = ArrayList(dialog.colors)
                 putStringArrayList(EXTRA_COLORS, list)
             }
 
@@ -100,9 +97,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
         val colorList = colors ?: ColorUtil.getColors(context!!, colorSwatch.value)
         val adapter = MaterialColorPickerAdapter(colorList)
         adapter.setColorShape(colorShape)
-        if (!defaultColor.isNullOrBlank()) {
-            adapter.setDefaultColor(defaultColor!!)
-        }
+        if (!defaultColor.isNullOrBlank()) adapter.setDefaultColor(defaultColor!!)
 
         materialColorRV.setHasFixedSize(true)
         materialColorRV.layoutManager = FlexboxLayoutManager(context)
@@ -110,9 +105,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
 
         positiveBtn.setOnClickListener {
             val color = adapter.getSelectedColor()
-            if (color.isNotBlank()) {
-                colorListener?.onColorSelected(ColorUtil.parseColor(color), color)
-            }
+            if (color.isNotBlank()) colorListener?.onColorSelected(ColorUtil.parseColor(color), color)
             dismiss()
         }
         negativeBtn.setOnClickListener { dismiss() }
