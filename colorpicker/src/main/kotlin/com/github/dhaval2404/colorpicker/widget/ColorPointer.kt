@@ -42,6 +42,7 @@ class ColorPointer @JvmOverloads constructor(
     defStyle: Int = 0,
     defStyleRes: Int = 0
 ) : View(context, attrs, defStyle, defStyleRes) {
+
     private var pointerRadius = COLOR_POINTER_RADIUS_DP
     private var point = PointF()
 

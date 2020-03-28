@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="colorAccent">@color/deep_orange_500</color>
+
     <color name="colorPointer">#222222</color>
+
+    <color name="positiveButtonTextColor">@color/colorAccent</color>
+    <color name="negativeButtonTextColor">@color/colorAccent</color>
 
 </resources>

@@ -17,7 +17,12 @@
 package com.github.dhaval2404.colorpicker.widget
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.RadialGradient
+import android.graphics.Shader
+import android.graphics.SweepGradient
 import android.util.AttributeSet
 import android.view.View
 
@@ -37,6 +42,7 @@ class ColorPalette @JvmOverloads constructor(
     defStyle: Int = 0,
     defStyleRes: Int = 0
 ) : View(context, attrs, defStyle, defStyleRes) {
+
     private var radius = 0f
     private var centerX = 0f
     private var centerY = 0f

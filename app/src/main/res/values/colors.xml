@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">@color/grey_600</color>
+    <color name="colorAccent">@color/grey_800</color>
 
     <array name="themeColors">
         <item>@color/green_500</item>

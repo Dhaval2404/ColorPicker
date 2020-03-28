@@ -1,14 +1,13 @@
 package com.github.dhaval2404.colorpicker.adapter
 
 import android.graphics.Color
-import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.github.dhaval2404.colorpicker.R
-import com.github.dhaval2404.colorpicker.databinding.AdapterMaterialColorPickerBinding
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.util.ColorUtil
+import com.github.dhaval2404.colorpicker.util.setVisibility
+import kotlinx.android.synthetic.main.adapter_material_color_picker.view.*
 
 /**
  * Material Color Listing
@@ -43,30 +42,23 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
 
     override fun getItemCount() = colors.size
 
-    private fun bindAdapter(parent: ViewGroup): AdapterMaterialColorPickerBinding {
-        val inflater = LayoutInflater.from(parent.context)
-        return DataBindingUtil.inflate(
-            inflater,
-            R.layout.adapter_material_color_picker,
-            parent,
-            false
-        )
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialColorViewHolder {
-        val binding = bindAdapter(parent)
-        return MaterialColorViewHolder(binding)
+        val rootView = ColorViewBinding.inflateAdapterItemView(parent)
+        return MaterialColorViewHolder(rootView)
     }
 
     override fun onBindViewHolder(holder: MaterialColorViewHolder, position: Int) {
         holder.bind(position)
     }
 
-    inner class MaterialColorViewHolder(private val binding: AdapterMaterialColorPickerBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class MaterialColorViewHolder(private val rootView: View) :
+        RecyclerView.ViewHolder(rootView) {
+
+        private val colorView = rootView.colorView
+        private val checkIcon = rootView.checkIcon
 
         init {
-            binding.colorView.setOnClickListener {
+            rootView.setOnClickListener {
                 val newIndex = it.tag as Int
                 val color = getItem(newIndex)
 
@@ -81,16 +73,15 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
         fun bind(position: Int) {
             val color = getItem(position)
 
-            binding.isChecked = color == this@MaterialColorPickerAdapter.color
-            binding.index = position
-            binding.color = Color.parseColor(color)
+            rootView.tag = position
 
-            if (colorShape == ColorShape.SQAURE) {
-                binding.colorView.radius =
-                    binding.colorView.context.resources.getDimension(R.dimen.color_card_square_radius)
-            }
+            ColorViewBinding.setBackgroundColor(colorView, color)
+            ColorViewBinding.setCardRadius(colorView, colorShape)
 
-            binding.checkIcon.setColorFilter(if (isDarkColor) Color.WHITE else Color.BLACK)
+            val isChecked = color == this@MaterialColorPickerAdapter.color
+            checkIcon.setVisibility(isChecked)
+            checkIcon.setColorFilter(if (isDarkColor) Color.WHITE else Color.BLACK)
         }
+
     }
 }

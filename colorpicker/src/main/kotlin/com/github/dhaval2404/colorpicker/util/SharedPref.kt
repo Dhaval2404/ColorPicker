@@ -3,8 +3,7 @@ package com.github.dhaval2404.colorpicker.util
 import android.content.Context
 import android.content.SharedPreferences
 import org.json.JSONArray
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Collections
 
 /**
  * Manage SharedPreferences
@@ -44,7 +43,9 @@ class SharedPref(context: Context) {
         val json = get(KEY_RECENT_COLORS)
 
         // Return empty list if no colors found
-        if (json.isNullOrBlank()) return Collections.emptyList()
+        if (json.isNullOrBlank()) {
+            return Collections.emptyList()
+        }
 
         // Convert JSONArray to ArrayList<String>
         return jsonArrayToArrayList(JSONArray(json))
@@ -60,10 +61,14 @@ class SharedPref(context: Context) {
             ColorUtil.isEqualColor(color, it)
         }
 
-        if (first >= 0) colors.removeAt(first)
+        if (first >= 0) {
+            colors.removeAt(first)
+        }
 
         // Remove last color if recent color list is full
-        if (colors.size >= RECENT_COLORS_LIMIT) colors.removeAt(colors.size - 1)
+        if (colors.size >= RECENT_COLORS_LIMIT) {
+            colors.removeAt(colors.size - 1)
+        }
 
         // Add New Color
         colors.add(0, color)

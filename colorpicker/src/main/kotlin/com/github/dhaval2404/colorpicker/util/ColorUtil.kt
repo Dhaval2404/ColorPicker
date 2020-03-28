@@ -4,9 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import androidx.core.graphics.ColorUtils
 import org.json.JSONObject
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
+import java.util.Collections
 
 /**
  * Color Utility
@@ -58,10 +56,19 @@ object ColorUtil {
         else Color.parseColor(color)
     }
 
-    fun formatColor(color: Int) = String.format("#%06x", color and 0xffffff)
+    fun formatColor(color: Int): String {
+        return String.format("#%06x", color and 0xffffff)
+    }
+
     fun isDarkColor(color: String) = isDarkColor(parseColor(color))
-    fun isDarkColor(color: Int) = ColorUtils.calculateLuminance(color) <= 0.4
-    fun isEqualColor(color1: String, color2: String, tolerance: Int = 50) = isEqualColor(parseColor(color1), parseColor(color2), tolerance)
+
+    fun isDarkColor(color: Int): Boolean {
+        return ColorUtils.calculateLuminance(color) <= 0.4
+    }
+
+    fun isEqualColor(color1: String, color2: String, tolerance: Int = 50): Boolean {
+        return isEqualColor(parseColor(color1), parseColor(color2), tolerance)
+    }
 
     fun isEqualColor(color1: Int, color2: Int, tolerance: Int = 50): Boolean {
         val red1 = Color.red(color1)

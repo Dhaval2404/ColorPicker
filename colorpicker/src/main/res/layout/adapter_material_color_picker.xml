@@ -1,48 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/colorView"
+    android:layout_width="@dimen/color_card_size"
+    android:layout_height="@dimen/color_card_size"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/color_card_margin"
+    app:cardCornerRadius="@dimen/color_card_radius"
+    tools:cardBackgroundColor="@color/green_300">
 
-    <data>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/checkIcon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        app:srcCompat="@drawable/baseline_check_24"
+        tools:visibility="visible" />
 
-        <import type="android.view.View" />
-
-        <variable
-            name="index"
-            type="Integer" />
-
-        <variable
-            name="color"
-            type="Integer" />
-
-        <variable
-            name="isChecked"
-            type="Boolean" />
-
-    </data>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/colorView"
-        android:layout_width="@dimen/color_card_size"
-        android:layout_height="@dimen/color_card_size"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/color_card_margin"
-        android:tag="@{index}"
-        app:cardBackgroundColor="@{color}"
-        tools:cardBackgroundColor="@color/green_300"
-        app:cardCornerRadius="@dimen/color_card_radius">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/checkIcon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            android:visibility="@{isChecked ? View.VISIBLE: View.GONE, default=gone}"
-            app:srcCompat="@drawable/baseline_check_24"
-            tools:visibility="visible" />
-
-    </androidx.cardview.widget.CardView>
-
-
-</layout>
+</androidx.cardview.widget.CardView>

@@ -46,6 +46,7 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/negativeButtonTextColor"
             android:text="@string/material_dialog_negative_button" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -53,6 +54,7 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/positiveButtonTextColor"
             android:text="@string/material_dialog_positive_button" />
 
     </LinearLayout>

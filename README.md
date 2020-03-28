@@ -38,18 +38,10 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 1. Gradle dependency:
 
 	```groovy
-	implementation 'com.github.dhaval2404:colorpicker:1.0'
+	implementation 'com.github.dhaval2404:colorpicker:1.1'
 	```
 
-2. Enable `databinding` in the build.gradle file
-
-    ```groovy
-    dataBinding {
-        enabled true
-    }
-    ```
-
-4. The **ColorPicker** configuration is created using the builder pattern.
+2. The **ColorPicker** configuration is created using the builder pattern.
 
 	```kotlin
     ColorPickerDialog
@@ -62,7 +54,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
         .show()
     ```
 
-5. The **MaterialColorPicker** configuration is created using the builder pattern.
+3. The **MaterialColorPicker** configuration is created using the builder pattern.
 
 	```kotlin
     MaterialColorPickerDialog
@@ -88,6 +80,15 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
       }
       .show()
     ```
+ *  You can change the color or Positive and Negative Button Text Color. Add Following parameters in your **colors.xml** file.
+
+     ```xml
+     <resources>
+         <!-- Here you can add color of your choice  -->
+         <color name="positiveButtonTextColor">@color/colorAccent</color>
+         <color name="negativeButtonTextColor">@color/colorAccent</color>
+     </resources>
+     ```
 
  *  You can provide predefine colors for the MaterialColorPicker
 
@@ -136,6 +137,10 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
   * Sample - Android Lollipop 5.0+ (API 21)
 
 # ✔️Changelog
+
+### Version: 1.1
+
+  * Added option to change positive and negative button text color [#2](https://github.com/Dhaval2404/ImagePicker/issues/2)
 
 ### Version: 1.0
 

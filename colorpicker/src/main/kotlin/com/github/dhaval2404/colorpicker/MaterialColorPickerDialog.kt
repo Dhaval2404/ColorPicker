@@ -1,6 +1,7 @@
 package com.github.dhaval2404.colorpicker
 
 import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.ColorRes
@@ -13,6 +14,7 @@ import com.github.dhaval2404.colorpicker.listener.ColorListener
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.model.ColorSwatch
 import com.github.dhaval2404.colorpicker.util.ColorUtil
+import com.github.dhaval2404.colorpicker.util.setButtonTextColor
 import com.google.android.flexbox.FlexboxLayoutManager
 
 /**
@@ -33,6 +35,7 @@ class MaterialColorPickerDialog private constructor(
     var colorShape: ColorShape,
     val colors: List<String>? = null
 ) {
+
     data class Builder(
         val context: Context,
         var title: String = context.getString(R.string.material_dialog_title),
@@ -44,6 +47,7 @@ class MaterialColorPickerDialog private constructor(
         var colorShape: ColorShape = ColorShape.CIRCLE,
         var colors: List<String>? = null
     ) {
+
         /**
          * Set Dialog Title
          *
@@ -276,7 +280,12 @@ class MaterialColorPickerDialog private constructor(
             }
         }
 
+        // Create AlertDialog
+        val alertDialog = dialog.create()
+
         // Show Dialog
-        dialog.show()
+        alertDialog.show()
+
+        alertDialog.setButtonTextColor()
     }
 }
