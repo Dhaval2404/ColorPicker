@@ -193,7 +193,7 @@ class ColorPickerDialog private constructor(
     fun show() {
 
         // Create Dialog Instance
-        val dialog = AlertDialog.Builder(context)
+        val dialog = AlertDialog.Builder(context, R.style.DialogStyle)
             .setTitle(title)
             .setNegativeButton(negativeButton, null)
 
@@ -214,7 +214,7 @@ class ColorPickerDialog private constructor(
         colorView.setCardBackgroundColor(initialColor)
 
         colorPicker.setColor(initialColor)
-        colorPicker.setColorListener { color, colorHex ->
+        colorPicker.setColorListener { color, _ ->
             colorView.setCardBackgroundColor(color)
         }
 

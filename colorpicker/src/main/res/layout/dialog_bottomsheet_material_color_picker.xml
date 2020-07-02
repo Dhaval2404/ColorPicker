@@ -43,7 +43,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/negativeBtn"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            style="@style/DialogStyle.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/negativeButtonTextColor"
@@ -51,13 +51,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/positiveBtn"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            style="@style/DialogStyle.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/positiveButtonTextColor"
             android:text="@string/material_dialog_positive_button" />
 
     </LinearLayout>
-
-
 </LinearLayout>

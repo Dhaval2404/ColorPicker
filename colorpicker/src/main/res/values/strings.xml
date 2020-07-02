@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ColorPicker</string>
+    <string name="app_name" translatable="false">ColorPicker</string>
 
     <string name="material_dialog_title">Choose Color</string>
-    <string name="material_dialog_positive_button">@android:string/ok</string>
-    <string name="material_dialog_negative_button">@android:string/cancel</string>
+    <string name="material_dialog_positive_button" translatable="false">@android:string/ok</string>
+    <string name="material_dialog_negative_button" translatable="false">@android:string/cancel</string>
     <string name="title_recent_colors">Recent Colors</string>
 
 </resources>

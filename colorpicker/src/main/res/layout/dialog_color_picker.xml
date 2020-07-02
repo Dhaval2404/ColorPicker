@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:orientation="vertical">
 
     <com.github.dhaval2404.colorpicker.ColorPickerView
@@ -38,7 +37,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:textColor="@color/grey_800"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:text="@string/title_recent_colors"/>
