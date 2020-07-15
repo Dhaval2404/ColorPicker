@@ -8,4 +8,5 @@
     <color name="positiveButtonTextColor">@color/colorAccent</color>
     <color name="negativeButtonTextColor">@color/colorAccent</color>
 
+    <color name="bottomSheetDividerColor">@color/grey_200</color>
 </resources>

@@ -20,7 +20,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/grey_200" />
+        android:background="@color/bottomSheetDividerColor" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/materialColorRV"
