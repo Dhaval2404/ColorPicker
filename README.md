@@ -38,7 +38,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 1. Gradle dependency:
 
 	```groovy
-	implementation 'com.github.dhaval2404:colorpicker:1.2'
+	implementation 'com.github.dhaval2404:colorpicker:1.2.1'
 	```
 
 2. The **ColorPicker** configuration is created using the builder pattern.
@@ -87,6 +87,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
          <!-- Here you can add color of your choice  -->
          <color name="positiveButtonTextColor">@color/colorAccent</color>
          <color name="negativeButtonTextColor">@color/colorAccent</color>
+         <color name="bottomSheetDividerColor">#F5F5F5</color>
      </resources>
      ```
 
