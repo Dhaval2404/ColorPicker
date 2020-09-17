@@ -56,5 +56,4 @@ object ColorViewBinding {
             cardView.radius = resources.getDimension(R.dimen.color_card_square_radius)
         }
     }
-
 }

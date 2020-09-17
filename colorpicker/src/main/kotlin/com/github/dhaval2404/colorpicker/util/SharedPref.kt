@@ -2,8 +2,8 @@ package com.github.dhaval2404.colorpicker.util
 
 import android.content.Context
 import android.content.SharedPreferences
-import org.json.JSONArray
 import java.util.Collections
+import org.json.JSONArray
 
 /**
  * Manage SharedPreferences

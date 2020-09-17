@@ -3,8 +3,8 @@ package com.github.dhaval2404.colorpicker.util
 import android.content.Context
 import android.graphics.Color
 import androidx.core.graphics.ColorUtils
-import org.json.JSONObject
 import java.util.Collections
+import org.json.JSONObject
 
 /**
  * Color Utility

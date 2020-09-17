@@ -1,7 +1,6 @@
 package com.github.dhaval2404.colorpicker
 
 import android.content.Context
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.ColorRes
@@ -283,9 +282,9 @@ class MaterialColorPickerDialog private constructor(
         // Create AlertDialog
         val alertDialog = dialog.create()
 
+        alertDialog.setButtonTextColor()
+
         // Show Dialog
         alertDialog.show()
-
-        alertDialog.setButtonTextColor()
     }
 }

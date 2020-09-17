@@ -76,6 +76,5 @@ class RecentColorAdapter(private val colors: List<String>) :
             ColorViewBinding.setBackgroundColor(colorView, color)
             ColorViewBinding.setCardRadius(colorView, colorShape)
         }
-
     }
 }

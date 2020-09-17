@@ -245,10 +245,10 @@ class ColorPickerDialog private constructor(
         // Create AlertDialog
         val alertDialog = dialog.create()
 
-        // Show Dialog
-        alertDialog.show()
-
         // Set Button Text Color
         alertDialog.setButtonTextColor()
+
+        // Show Dialog
+        alertDialog.show()
     }
 }
