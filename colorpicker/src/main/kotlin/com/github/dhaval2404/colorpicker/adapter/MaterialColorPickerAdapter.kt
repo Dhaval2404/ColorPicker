@@ -82,6 +82,5 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
             checkIcon.setVisibility(isChecked)
             checkIcon.setColorFilter(if (isDarkColor) Color.WHITE else Color.BLACK)
         }
-
     }
 }
