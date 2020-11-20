@@ -44,42 +44,70 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 2. The **ColorPicker** configuration is created using the builder pattern.
 
 	```kotlin
+    // Kotlin Code
     ColorPickerDialog
-        .Builder(activity)        			// Pass Activity Instance
-        .setColorShape(ColorShape.SQAURE)   // Default ColorShape.CIRCLE
-        .setDefaultColor(mColor)        	// Pass Default Color
+        .Builder(this)        				// Pass Activity Instance
+        .setTitle("Pick Theme")           	// Default "Choose Color"
+		.setColorShape(ColorShape.SQAURE)   // Default ColorShape.CIRCLE
+        .setDefaultColor(mDefaultColor)     // Pass Default Color
         .setColorListener { color, colorHex ->
         	// Handle Color Selection
         }
         .show()
     ```
 
+    ```java
+    // Java Code
+    new ColorPickerDialog
+    	.Builder(this)
+        .setTitle("Pick Theme")
+		.setColorShape(ColorShape.SQAURE)
+        .setDefaultColor(mDefaultColor)
+        .setColorListener(new ColorListener() {
+            @Override
+            public void onColorSelected(int color, @NotNull String colorHex) {
+                // Handle Color Selection
+            }
+        })
+        .show();
+    ````
+
+
 3. The **MaterialColorPicker** configuration is created using the builder pattern.
 
 	```kotlin
+    // Kotlin Code
     MaterialColorPickerDialog
-        .Builder(activity)        				// Pass Activity Instance
+        .Builder(this)        					// Pass Activity Instance
+        .setTitle("Pick Theme")           		// Default "Choose Color"
         .setColorShape(ColorShape.SQAURE)   	// Default ColorShape.CIRCLE
         .setColorSwatch(ColorSwatch._300)   	// Default ColorSwatch._500
-        .setDefaultColor(mMaterialColorSquare) 	// Pass Default Color
+        .setDefaultColor(mDefaultColor) 		// Pass Default Color
         .setColorListener { color, colorHex ->
        		// Handle Color Selection
         }
         .show()
     ```
 
+    ```java
+    // Java Code
+    new MaterialColorPickerDialog
+        .Builder(this)
+        .setTitle("Pick Theme")
+    	.setColorShape(ColorShape.SQAURE)
+        .setColorSwatch(ColorSwatch._300)
+        .setDefaultColor(mDefaultColor)
+        .setColorListener(new ColorListener() {
+            @Override
+            public void onColorSelected(int color, @NotNull String colorHex) {
+            	// Handle Color Selection
+            }
+        })
+        .show();
+    ```
+
 # 🎨Customization
 
- *  You can change title of the Dialog
-    ```kotlin
-    MaterialColorPickerDialog
-      .Builder(activity)        			// Pass Activity Instance
-      .setTitle("Pick Theme")               // Change Dialog Title
-      .setColorListener { color, colorHex ->
-          // Handle Color Selection
-      }
-      .show()
-    ```
  *  You can change the color or Positive and Negative Button Text Color. Add Following parameters in your **colors.xml** file.
 
      ```xml
@@ -93,34 +121,51 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 
  *  You can provide predefine colors for the MaterialColorPicker
 
-     ```kotlin
-      MaterialColorPickerDialog
-          .Builder(activity)        			// Pass Activity Instance
-          .setColors(							// Pass Predefined Hex Color
-              arrayListOf(
-              "#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
-              "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"
-              )
-          )
-          .setColorListener { color, colorHex ->
-              // Handle Color Selection
-          }
-          .show()
+     ```java
+     // Kotlin Code
+     MaterialColorPickerDialog
+		.Builder(activity!!)
+
+        // Option 1: Pass Hex Color Codes
+        //.setColors(arrayListOf("#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb", "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"))
+
+        // Option 2: Pass Hex Color Codes from string.xml
+        //.setColors(resources.getStringArray(R.array.themeColorHex))
+
+        // Option 3: Pass color array from colors.xml
+		.setColorRes(resources.getIntArray(R.array.themeColors))
+
+		.setColorListener { color, colorHex ->
+		  // Handle Color Selection
+		}
+		.show()
       ```
 
-      or
+      ```java
+      // Java Code
+      String[] colorArray = new String[]{"#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
+                    "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"};
 
-      ```kotlin
-      MaterialColorPickerDialog
-          .Builder(activity)        			// Pass Activity Instance
-          .setColorRes(resources.getIntArray(R.array.themeColors).toList()) // Pass Predefined Hex Color
-          .setColorListener { color, colorHex ->
-              // Handle Color Selection
-          }
-          .show()
+      new MaterialColorPickerDialog
+          .Builder(requireActivity())
+          // Option 1: Pass Hex Color Codes
+          //.setColors(colorArray)
+
+          // Option 2: Pass Hex Color Codes from string.xml
+          //.setColors(getResources().getStringArray(R.array.themeColorHex))
+
+          // Option 3: Pass color array from colors.xml
+          .setColorRes(getResources().getIntArray(R.array.themeColors))
+
+          .setColorListener(object : ColorListener {
+              override fun onColorSelected(color: Int, colorHex: String) {
+                  // Handle Color Selection
+              }
+          })
+          .show();
       ```
 
-      Where **R.array.themeColors** is defined as  below
+      Where **R.array.themeColors** and **R.array.themeColorHex** are defined as  below
 
       ```xml
       <array name="themeColors">
@@ -130,6 +175,19 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
         <item>@color/grey_500</item>
         <item>@color/orange_500</item>
       </array>
+
+      <string-array name="themeColorHex">
+        <item>#f6e58d</item>
+        <item>#ffbe76</item>
+        <item>#ff7979</item>
+        <item>#badc58</item>
+        <item>#dff9fb</item>
+        <item>#7ed6df</item>
+        <item>#e056fd</item>
+        <item>#686de0</item>
+        <item>#30336b</item>
+        <item>#95afc0</item>
+    </string-array>
       ```
 
 # 💥Compatibility
