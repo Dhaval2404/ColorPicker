@@ -48,7 +48,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
     ColorPickerDialog
         .Builder(this)        				// Pass Activity Instance
         .setTitle("Pick Theme")           	// Default "Choose Color"
-		.setColorShape(ColorShape.SQAURE)   // Default ColorShape.CIRCLE
+        .setColorShape(ColorShape.SQAURE)   // Default ColorShape.CIRCLE
         .setDefaultColor(mDefaultColor)     // Pass Default Color
         .setColorListener { color, colorHex ->
         	// Handle Color Selection
@@ -59,9 +59,9 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
     ```java
     // Java Code
     new ColorPickerDialog
-    	.Builder(this)
+        .Builder(this)
         .setTitle("Pick Theme")
-		.setColorShape(ColorShape.SQAURE)
+        .setColorShape(ColorShape.SQAURE)
         .setDefaultColor(mDefaultColor)
         .setColorListener(new ColorListener() {
             @Override
@@ -94,7 +94,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
     new MaterialColorPickerDialog
         .Builder(this)
         .setTitle("Pick Theme")
-    	.setColorShape(ColorShape.SQAURE)
+        .setColorShape(ColorShape.SQAURE)
         .setColorSwatch(ColorSwatch._300)
         .setDefaultColor(mDefaultColor)
         .setColorListener(new ColorListener() {
@@ -133,36 +133,37 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
         //.setColors(resources.getStringArray(R.array.themeColorHex))
 
         // Option 3: Pass color array from colors.xml
-		.setColorRes(resources.getIntArray(R.array.themeColors))
+        .setColorRes(resources.getIntArray(R.array.themeColors))
 
-		.setColorListener { color, colorHex ->
-		  // Handle Color Selection
-		}
-		.show()
-      ```
+        .setColorListener { color, colorHex ->
+          // Handle Color Selection
+        }
+        .show()
+	```
 
-      ```java
-      // Java Code
-      String[] colorArray = new String[]{"#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
-                    "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"};
+	```java
+	// Java Code
+	String[] colorArray = new String[]{"#f6e58d", "#ffbe76", "#ff7979",
+	    "#badc58", "#dff9fb", "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"};
 
-      new MaterialColorPickerDialog
-          .Builder(requireActivity())
-          // Option 1: Pass Hex Color Codes
-          //.setColors(colorArray)
+	new MaterialColorPickerDialog
+	    .Builder(requireActivity())
 
-          // Option 2: Pass Hex Color Codes from string.xml
-          //.setColors(getResources().getStringArray(R.array.themeColorHex))
+	    // Option 1: Pass Hex Color Codes
+	    //.setColors(colorArray)
 
-          // Option 3: Pass color array from colors.xml
-          .setColorRes(getResources().getIntArray(R.array.themeColors))
+	    // Option 2: Pass Hex Color Codes from string.xml
+	    //.setColors(getResources().getStringArray(R.array.themeColorHex))
 
-          .setColorListener(object : ColorListener {
-              override fun onColorSelected(color: Int, colorHex: String) {
-                  // Handle Color Selection
-              }
-          })
-          .show();
+	    // Option 3: Pass color array from colors.xml
+	    .setColorRes(getResources().getIntArray(R.array.themeColors))
+	    
+	    .setColorListener(object : ColorListener {
+            override fun onColorSelected(color: Int, colorHex: String) {
+                // Handle Color Selection
+            }
+        })
+	    .show();
       ```
 
       Where **R.array.themeColors** and **R.array.themeColorHex** are defined as  below
