@@ -35,15 +35,13 @@ class ColorPickerDialog private constructor(
     var colorShape: ColorShape
 ) {
 
-    data class Builder(
-        val context: Context,
-        var title: String = context.getString(R.string.material_dialog_title),
-        var positiveButton: String = context.getString(R.string.material_dialog_positive_button),
-        var negativeButton: String = context.getString(R.string.material_dialog_negative_button),
-        var colorListener: ColorListener? = null,
-        var defaultColor: String? = null,
-        var colorShape: ColorShape = ColorShape.CIRCLE
-    ) {
+    class Builder(val context: Context) {
+        private var title: String = context.getString(R.string.material_dialog_title)
+        private var positiveButton: String = context.getString(R.string.material_dialog_positive_button)
+        private var negativeButton: String = context.getString(R.string.material_dialog_negative_button)
+        private var colorListener: ColorListener? = null
+        private var defaultColor: String? = null
+        private var colorShape: ColorShape = ColorShape.CIRCLE
 
         /**
          * Set Dialog Title

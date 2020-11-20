@@ -36,17 +36,16 @@ class MaterialColorPickerDialog private constructor(
     val colors: List<String>? = null
 ) {
 
-    data class Builder(
-        val context: Context,
-        var title: String = context.getString(R.string.material_dialog_title),
-        var positiveButton: String = context.getString(R.string.material_dialog_positive_button),
-        var negativeButton: String = context.getString(R.string.material_dialog_negative_button),
-        var colorListener: ColorListener? = null,
-        var defaultColor: String? = null,
-        var colorSwatch: ColorSwatch = ColorSwatch._300,
-        var colorShape: ColorShape = ColorShape.CIRCLE,
-        var colors: List<String>? = null
-    ) {
+    class Builder(val context: Context) {
+
+        private var title: String = context.getString(R.string.material_dialog_title)
+        private var positiveButton: String = context.getString(R.string.material_dialog_positive_button)
+        private var negativeButton: String = context.getString(R.string.material_dialog_negative_button)
+        private var colorListener: ColorListener? = null
+        private var defaultColor: String? = null
+        private var colorSwatch: ColorSwatch = ColorSwatch._300
+        private var colorShape: ColorShape = ColorShape.CIRCLE
+        private var colors: List<String>? = null
 
         /**
          * Set Dialog Title
@@ -185,6 +184,11 @@ class MaterialColorPickerDialog private constructor(
             return this
         }
 
+        fun setColors(colors: Array<String>): Builder {
+            this.colors = colors.toList()
+            return this
+        }
+
         /**
          * Provide PreDefined Colors,
          *
@@ -194,6 +198,11 @@ class MaterialColorPickerDialog private constructor(
          * @param colors List<Int> List of Color Resource
          */
         fun setColorRes(colors: List<Int>): Builder {
+            this.colors = colors.map { ColorUtil.formatColor(it) }
+            return this
+        }
+
+        fun setColorRes(colors: IntArray): Builder {
             this.colors = colors.map { ColorUtil.formatColor(it) }
             return this
         }

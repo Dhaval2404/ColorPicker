@@ -51,25 +51,31 @@ object ColorUtil {
         return colorMap
     }
 
+    @JvmStatic
     fun parseColor(color: String): Int {
         return if (color.isBlank()) 0
         else Color.parseColor(color)
     }
 
+    @JvmStatic
     fun formatColor(color: Int): String {
         return String.format("#%06x", color and 0xffffff)
     }
 
+    @JvmStatic
     fun isDarkColor(color: String) = isDarkColor(parseColor(color))
 
+    @JvmStatic
     fun isDarkColor(color: Int): Boolean {
         return ColorUtils.calculateLuminance(color) <= 0.4
     }
 
+    @JvmStatic
     fun isEqualColor(color1: String, color2: String, tolerance: Int = 50): Boolean {
         return isEqualColor(parseColor(color1), parseColor(color2), tolerance)
     }
 
+    @JvmStatic
     fun isEqualColor(color1: Int, color2: Int, tolerance: Int = 50): Boolean {
         val red1 = Color.red(color1)
         val green1 = Color.green(color1)
