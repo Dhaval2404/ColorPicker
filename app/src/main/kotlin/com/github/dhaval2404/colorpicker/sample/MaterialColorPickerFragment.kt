@@ -42,7 +42,7 @@ class MaterialColorPickerFragment : Fragment() {
 
         materialDialogPickerSquareBtn.setOnClickListener { _ ->
             MaterialColorPickerDialog
-                .Builder(activity!!) // Pass Activity Instance
+                .Builder(requireActivity()) // Pass Activity Instance
                 .setColorShape(ColorShape.SQAURE) // Or ColorShape.CIRCLE
                 .setColorSwatch(ColorSwatch._300) // Default ColorSwatch._500
                 .setDefaultColor(mMaterialColorSquare) // Pass Default Color
@@ -55,7 +55,7 @@ class MaterialColorPickerFragment : Fragment() {
 
         materialDialogPickerCircleBtn.setOnClickListener { _ ->
             MaterialColorPickerDialog
-                .Builder(activity!!)
+                .Builder(requireActivity())
                 .setColorSwatch(ColorSwatch._500)
                 .setDefaultColor(mMaterialColorCircle)
                 .setColorListener(object : ColorListener {
@@ -69,7 +69,7 @@ class MaterialColorPickerFragment : Fragment() {
 
         materialBottomSheetDialogBtn.setOnClickListener { _ ->
             MaterialColorPickerDialog
-                .Builder(activity!!)
+                .Builder(requireActivity())
                 .setColorSwatch(ColorSwatch._300)
                 .setDefaultColor(mMaterialColorBottomSheet)
                 .setColorListener(object : ColorListener {
@@ -83,19 +83,10 @@ class MaterialColorPickerFragment : Fragment() {
 
         materialPreDefinedColorPickerBtn.setOnClickListener { _ ->
             MaterialColorPickerDialog
-                .Builder(activity!!)
-                /*.setColors(
-                    arrayListOf(
-                        "#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
-                        "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"
-                    )
-                )*/
-                .setColorRes(resources.getStringArray(R.array.themeColorHex).map {
-                    Color.parseColor(
-                        it
-                    )
-                }.toList())
-                // .setColorRes(resources.getIntArray(R.array.themeColors).toList())
+                .Builder(requireActivity())
+                .setColors(arrayListOf("#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb", "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"))
+                // .setColors(resources.getStringArray(R.array.themeColorHex))
+                .setColorRes(resources.getIntArray(R.array.themeColors))
                 .setDefaultColor(mMaterialPreDefinedColor)
                 .setColorListener(object : ColorListener {
                     override fun onColorSelected(color: Int, colorHex: String) {
