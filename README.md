@@ -190,6 +190,57 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
         <item>#95afc0</item>
     </string-array>
       ```
+ *  You can set the Dismiss listener
+
+    **ColorPicker**
+
+	```kotlin
+    // Kotlin Code
+     ColorPickerDialog
+        .Builder(requireActivity())
+        .setDismissListener {
+            // Handle Dismiss Event
+        }
+        .show()
+    ```
+
+    ```java
+    // Java Code
+    new ColorPickerDialog
+        .Builder(this)
+        .setDismissListener(new DismissListener() {
+            @Override
+            public void onDismiss() {
+                // Handle Dismiss Event
+            }
+        })
+        .show();
+    ````
+
+    **MaterialColorPicker**
+
+    ```kotlin
+    // Kotlin Code
+    MaterialColorPickerDialog
+        .Builder(this)
+        .setDismissListener {
+            // Handle Dismiss Event
+        }
+        .show()
+    ```
+
+    ```java
+    // Java Code
+    new MaterialColorPickerDialog
+        .Builder(this)
+        .setDismissListener(new DismissListener() {
+            @Override
+            public void onDismiss() {
+                // Handle Dismiss Event
+            }
+        })
+        .show();
+    ```
 
 # 💥Compatibility
 

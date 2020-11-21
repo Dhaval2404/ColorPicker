@@ -1,7 +1,6 @@
 package com.github.dhaval2404.colorpicker
 
 import android.content.Context
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.ColorRes
@@ -11,6 +10,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.dhaval2404.colorpicker.adapter.MaterialColorPickerAdapter
 import com.github.dhaval2404.colorpicker.listener.ColorListener
+import com.github.dhaval2404.colorpicker.listener.DismissListener
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.model.ColorSwatch
 import com.github.dhaval2404.colorpicker.util.ColorUtil
@@ -30,6 +30,7 @@ class MaterialColorPickerDialog private constructor(
     val positiveButton: String,
     val negativeButton: String,
     val colorListener: ColorListener?,
+    val dismissListener: DismissListener?,
     val defaultColor: String?,
     val colorSwatch: ColorSwatch,
     var colorShape: ColorShape,
@@ -42,6 +43,7 @@ class MaterialColorPickerDialog private constructor(
         private var positiveButton: String = context.getString(R.string.material_dialog_positive_button)
         private var negativeButton: String = context.getString(R.string.material_dialog_negative_button)
         private var colorListener: ColorListener? = null
+        private var dismissListener: DismissListener? = null
         private var defaultColor: String? = null
         private var colorSwatch: ColorSwatch = ColorSwatch._300
         private var colorShape: ColorShape = ColorShape.CIRCLE
@@ -172,6 +174,30 @@ class MaterialColorPickerDialog private constructor(
         }
 
         /**
+         * Sets the callback that will be called when the dialog is dismissed for any reason.
+         *
+         * @param listener DismissListener
+         */
+        fun setDismissListener(listener: DismissListener?): Builder {
+            this.dismissListener = listener
+            return this
+        }
+
+        /**
+         * Sets the callback that will be called when the dialog is dismissed for any reason.
+         *
+         * @param listener listener: () -> Unit
+         */
+        fun setDismissListener(listener: () -> Unit): Builder {
+            this.dismissListener = object : DismissListener {
+                override fun onDismiss() {
+                    listener.invoke()
+                }
+            }
+            return this
+        }
+
+        /**
          * Provide PreDefined Colors,
          *
          * If colors is not empty, User can choose colors from provided list
@@ -222,6 +248,7 @@ class MaterialColorPickerDialog private constructor(
                 positiveButton = positiveButton,
                 negativeButton = negativeButton,
                 colorListener = colorListener,
+                dismissListener = dismissListener,
                 defaultColor = defaultColor,
                 colorShape = colorShape,
                 colorSwatch = colorSwatch,
@@ -250,6 +277,7 @@ class MaterialColorPickerDialog private constructor(
     fun showBottomSheet(fragmentManager: FragmentManager) {
         MaterialColorPickerBottomSheet.getInstance(this)
             .setColorListener(colorListener)
+            .setDismissListener(dismissListener)
             .show(fragmentManager, "")
     }
 
@@ -286,6 +314,12 @@ class MaterialColorPickerDialog private constructor(
             val color = adapter.getSelectedColor()
             if (color.isNotBlank()) {
                 colorListener?.onColorSelected(ColorUtil.parseColor(color), color)
+            }
+        }
+
+        dismissListener?.let { listener ->
+            dialog.setOnDismissListener {
+                listener.onDismiss()
             }
         }
 

@@ -1,11 +1,13 @@
 package com.github.dhaval2404.colorpicker
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.github.dhaval2404.colorpicker.adapter.MaterialColorPickerAdapter
 import com.github.dhaval2404.colorpicker.listener.ColorListener
+import com.github.dhaval2404.colorpicker.listener.DismissListener
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.model.ColorSwatch
 import com.github.dhaval2404.colorpicker.util.ColorUtil
@@ -26,6 +28,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
     private var positiveButton: String? = null
     private var negativeButton: String? = null
     private var colorListener: ColorListener? = null
+    private var dismissListener: DismissListener? = null
     private var defaultColor: String? = null
     private var colorShape: ColorShape = ColorShape.CIRCLE
     private var colorSwatch: ColorSwatch = ColorSwatch._300
@@ -67,6 +70,11 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
 
     fun setColorListener(listener: ColorListener?): MaterialColorPickerBottomSheet {
         this.colorListener = listener
+        return this
+    }
+
+    fun setDismissListener(listener: DismissListener?): MaterialColorPickerBottomSheet {
+        this.dismissListener = listener
         return this
     }
 
@@ -117,4 +125,15 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
         }
         negativeBtn.setOnClickListener { dismiss() }
     }
+
+    override fun dismiss() {
+        super.dismiss()
+        dismissListener?.onDismiss()
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        dismissListener?.onDismiss()
+    }
+
 }

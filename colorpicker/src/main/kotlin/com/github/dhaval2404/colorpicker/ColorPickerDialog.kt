@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.github.dhaval2404.colorpicker.adapter.RecentColorAdapter
 import com.github.dhaval2404.colorpicker.listener.ColorListener
+import com.github.dhaval2404.colorpicker.listener.DismissListener
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.util.ColorUtil
 import com.github.dhaval2404.colorpicker.util.SharedPref
@@ -31,6 +32,7 @@ class ColorPickerDialog private constructor(
     val positiveButton: String,
     val negativeButton: String,
     val colorListener: ColorListener?,
+    val dismissListener: DismissListener?,
     val defaultColor: String?,
     var colorShape: ColorShape
 ) {
@@ -40,6 +42,7 @@ class ColorPickerDialog private constructor(
         private var positiveButton: String = context.getString(R.string.material_dialog_positive_button)
         private var negativeButton: String = context.getString(R.string.material_dialog_negative_button)
         private var colorListener: ColorListener? = null
+        private var dismissListener: DismissListener? = null
         private var defaultColor: String? = null
         private var colorShape: ColorShape = ColorShape.CIRCLE
 
@@ -158,6 +161,30 @@ class ColorPickerDialog private constructor(
         }
 
         /**
+         * Sets the callback that will be called when the dialog is dismissed for any reason.
+         *
+         * @param listener DismissListener
+         */
+        fun setDismissListener(listener: DismissListener?): Builder {
+            this.dismissListener = listener
+            return this
+        }
+
+        /**
+         * Sets the callback that will be called when the dialog is dismissed for any reason.
+         *
+         * @param listener listener: () -> Unit
+         */
+        fun setDismissListener(listener: () -> Unit): Builder {
+            this.dismissListener = object : DismissListener {
+                override fun onDismiss() {
+                    listener.invoke()
+                }
+            }
+            return this
+        }
+
+        /**
          * Creates an {@link ColorPickerDialog} with the arguments supplied to this
          * builder.
          * <p>
@@ -172,6 +199,7 @@ class ColorPickerDialog private constructor(
                 positiveButton = positiveButton,
                 negativeButton = negativeButton,
                 colorListener = colorListener,
+                dismissListener = dismissListener,
                 defaultColor = defaultColor,
                 colorShape = colorShape
             )
@@ -238,6 +266,12 @@ class ColorPickerDialog private constructor(
             val colorHex = ColorUtil.formatColor(color)
             colorListener?.onColorSelected(color, colorHex)
             sharedPref.addColor(color = colorHex)
+        }
+
+        dismissListener?.let { listener ->
+            dialog.setOnDismissListener {
+                listener.onDismiss()
+            }
         }
 
         // Create AlertDialog
