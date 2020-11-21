@@ -3,6 +3,7 @@ package com.github.dhaval2404.colorpicker.sample
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +49,9 @@ class ColorPickerFragment : Fragment() {
                     mColor = color
                     colorPickerView.setColor(color)
                     setButtonBackground(colorPickerBtn, color)
+                }
+                .setDismissListener {
+                    Log.d("ColorPickerDialog", "Handle dismiss event")
                 }
                 .show()
         }

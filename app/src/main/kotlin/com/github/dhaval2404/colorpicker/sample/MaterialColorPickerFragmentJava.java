@@ -3,6 +3,7 @@ package com.github.dhaval2404.colorpicker.sample;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog;
 import com.github.dhaval2404.colorpicker.listener.ColorListener;
+import com.github.dhaval2404.colorpicker.listener.DismissListener;
 import com.github.dhaval2404.colorpicker.model.ColorShape;
 import com.github.dhaval2404.colorpicker.model.ColorSwatch;
 import com.github.dhaval2404.colorpicker.util.ColorUtil;
@@ -71,6 +73,12 @@ public class MaterialColorPickerFragmentJava extends Fragment {
                             setButtonBackground(materialDialogPickerCircleBtn, color);
                         }
                     })
+                    .setDismissListener(new DismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            Log.d("ColorPickerDialog", "Dismiss");
+                        }
+                    })
                     .show();
         });
 
@@ -86,7 +94,13 @@ public class MaterialColorPickerFragmentJava extends Fragment {
                             setButtonBackground(materialBottomSheetDialogBtn, color);
                         }
                     })
-                    .showBottomSheet(getFragmentManager());
+                    .setDismissListener(new DismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            Log.d("BottomSheetDialog", "Dismiss");
+                        }
+                    })
+                    .showBottomSheet(getChildFragmentManager());
         });
 
         materialPreDefinedColorPickerBtn.setOnClickListener(view -> {

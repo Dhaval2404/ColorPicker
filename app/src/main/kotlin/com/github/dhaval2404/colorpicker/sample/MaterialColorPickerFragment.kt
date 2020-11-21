@@ -3,6 +3,7 @@ package com.github.dhaval2404.colorpicker.sample
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,6 +65,9 @@ class MaterialColorPickerFragment : Fragment() {
                         setButtonBackground(materialDialogPickerCircleBtn, color)
                     }
                 })
+                .setDismissListener {
+                    Log.d("MaterialDialogPicker", "Handle dismiss event")
+                }
                 .show()
         }
 
@@ -78,14 +82,17 @@ class MaterialColorPickerFragment : Fragment() {
                         setButtonBackground(materialBottomSheetDialogBtn, color)
                     }
                 })
+                .setDismissListener {
+                    Log.d("MaterialBottomSheet", "Handle dismiss event")
+                }
                 .showBottomSheet(childFragmentManager)
         }
 
         materialPreDefinedColorPickerBtn.setOnClickListener { _ ->
             MaterialColorPickerDialog
                 .Builder(requireActivity())
-                .setColors(arrayListOf("#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb", "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"))
-                // .setColors(resources.getStringArray(R.array.themeColorHex))
+                //.setColors(arrayListOf("#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb", "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"))
+                //.setColors(resources.getStringArray(R.array.themeColorHex))
                 .setColorRes(resources.getIntArray(R.array.themeColors))
                 .setDefaultColor(mMaterialPreDefinedColor)
                 .setColorListener(object : ColorListener {
@@ -94,7 +101,7 @@ class MaterialColorPickerFragment : Fragment() {
                         setButtonBackground(materialPreDefinedColorPickerBtn, color)
                     }
                 })
-                .showBottomSheet(childFragmentManager)
+                .showBottomSheet(requireFragmentManager())
         }
     }
 

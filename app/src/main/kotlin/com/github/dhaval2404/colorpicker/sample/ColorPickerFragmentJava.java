@@ -3,6 +3,7 @@ package com.github.dhaval2404.colorpicker.sample;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.github.dhaval2404.colorpicker.ColorPickerDialog;
 import com.github.dhaval2404.colorpicker.ColorPickerView;
 import com.github.dhaval2404.colorpicker.listener.ColorListener;
+import com.github.dhaval2404.colorpicker.listener.DismissListener;
 import com.github.dhaval2404.colorpicker.model.ColorShape;
 import com.github.dhaval2404.colorpicker.util.ColorUtil;
 import com.github.dhaval2404.colorpicker.util.SharedPref;
@@ -52,6 +54,12 @@ public class ColorPickerFragmentJava extends Fragment {
                             mColor = color;
                             colorPickerView.setColor(color);
                             setButtonBackground(colorPickerBtn, color);
+                        }
+                    })
+                    .setDismissListener(new DismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            Log.d("ColorPickerDialog", "Handle dismiss event");
                         }
                     })
                     .show();
