@@ -34,7 +34,8 @@ class MaterialColorPickerDialog private constructor(
     val defaultColor: String?,
     val colorSwatch: ColorSwatch,
     var colorShape: ColorShape,
-    val colors: List<String>? = null
+    val colors: List<String>? = null,
+    var isTickColorPerCard: Boolean = false
 ) {
 
     class Builder(val context: Context) {
@@ -48,6 +49,7 @@ class MaterialColorPickerDialog private constructor(
         private var colorSwatch: ColorSwatch = ColorSwatch._300
         private var colorShape: ColorShape = ColorShape.CIRCLE
         private var colors: List<String>? = null
+        private var isTickColorPerCard: Boolean = false
 
         /**
          * Set Dialog Title
@@ -233,6 +235,30 @@ class MaterialColorPickerDialog private constructor(
             return this
         }
 
+
+        /**
+         * Set tick icon color, Default will be false
+         *
+         * If false,
+         *     First the majority of color(dark/light) will be calculated
+         *     If dark color count > light color count
+         *          tick color will be WHITE
+         *     else
+         *          tick color will be BLACK
+         *     Here, Tick color will be same card,
+         *     Which might create issue with black and white color in list
+         *
+         * If true,
+         *      based on the each color(dark/light) the card tick color will be decided
+         *      Here, Tick color will be different for each card
+         *
+         * @param tickColorPerCard Boolean
+         */
+        fun setTickColorPerCard(tickColorPerCard: Boolean): Builder {
+            this.isTickColorPerCard = tickColorPerCard
+            return this
+        }
+
         /**
          * Creates an {@link MaterialColorPickerDialog} with the arguments supplied to this
          * builder.
@@ -252,7 +278,8 @@ class MaterialColorPickerDialog private constructor(
                 defaultColor = defaultColor,
                 colorShape = colorShape,
                 colorSwatch = colorSwatch,
-                colors = colors
+                colors = colors,
+                isTickColorPerCard = isTickColorPerCard
             )
         }
 
@@ -299,6 +326,7 @@ class MaterialColorPickerDialog private constructor(
         val colorList = colors ?: ColorUtil.getColors(context, colorSwatch.value)
         val adapter = MaterialColorPickerAdapter(colorList)
         adapter.setColorShape(colorShape)
+        adapter.setTickColorPerCard(isTickColorPerCard)
         if (!defaultColor.isNullOrBlank()) {
             adapter.setDefaultColor(defaultColor)
         }

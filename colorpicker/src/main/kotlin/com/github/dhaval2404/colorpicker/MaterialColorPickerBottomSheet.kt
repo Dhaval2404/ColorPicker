@@ -33,6 +33,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
     private var colorShape: ColorShape = ColorShape.CIRCLE
     private var colorSwatch: ColorSwatch = ColorSwatch._300
     private var colors: List<String>? = null
+    private var isTickColorPerCard: Boolean = false
 
     companion object {
 
@@ -44,6 +45,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
         private const val EXTRA_COLOR_SHAPE = "extra.color_shape"
         private const val EXTRA_COLOR_SWATCH = "extra.color_swatch"
         private const val EXTRA_COLORS = "extra.colors"
+        private const val EXTRA_IS_TICK_COLOR_PER_CARD = "extra.is_tick_color_per_card"
 
         fun getInstance(dialog: MaterialColorPickerDialog): MaterialColorPickerBottomSheet {
             val bundle = Bundle().apply {
@@ -54,6 +56,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
                 putString(EXTRA_DEFAULT_COLOR, dialog.defaultColor)
                 putParcelable(EXTRA_COLOR_SWATCH, dialog.colorSwatch)
                 putParcelable(EXTRA_COLOR_SHAPE, dialog.colorShape)
+                putBoolean(EXTRA_IS_TICK_COLOR_PER_CARD, dialog.isTickColorPerCard)
 
                 var list: ArrayList<String>? = null
                 if (dialog.colors != null) {
@@ -99,6 +102,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
             colorShape = it.getParcelable(EXTRA_COLOR_SHAPE)!!
 
             colors = it.getStringArrayList(EXTRA_COLORS)
+            isTickColorPerCard = it.getBoolean(EXTRA_IS_TICK_COLOR_PER_CARD)
         }
 
         title?.let { titleTxt.text = it }
@@ -108,6 +112,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
         val colorList = colors ?: ColorUtil.getColors(context!!, colorSwatch.value)
         val adapter = MaterialColorPickerAdapter(colorList)
         adapter.setColorShape(colorShape)
+        adapter.setTickColorPerCard(isTickColorPerCard)
         if (!defaultColor.isNullOrBlank()) {
             adapter.setDefaultColor(defaultColor!!)
         }
