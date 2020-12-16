@@ -241,6 +241,23 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
         })
         .show();
     ```
+ *  You can set the Tick color for each card. This will come handy when color list include black or white colors. By default tick color will be either black or white based on the color darkness. If more dark colors the tick color will be white else black.
+
+	```kotlin
+     // Kotlin Code
+     MaterialColorPickerDialog
+         .Builder(this)
+         .setTickColorPerCard(true)     // Default will be false
+         .show()
+	```
+
+	```java
+     // Java Code
+     new MaterialColorPickerDialog
+         .Builder(this)
+         .setTickColorPerCard(true)     // Default will be false
+         .show();
+	```
 
 # 💥Compatibility
 
