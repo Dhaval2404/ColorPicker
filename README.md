@@ -281,6 +281,9 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 ## 📃 Libraries Used
 * ColorPicker [https://github.com/duanhong169/ColorPicker](https://github.com/duanhong169/ColorPicker)
 
+## 🌟 Credits
+  * App icon made by [Nikita Golubev](https://www.flaticon.com/authors/nikita-golubev "Nikita Golubev") from [Flaticon](https://www.flaticon.com/free-icon/color-circle_1831908?term=color&page=1&position=1&related_item_id=1831908)
+
 ### Let us know!
 
 We'll be really happy if you sent us links to your projects where you use our component. Just send an email to **dhavalpatel244@gmail.com** And do let us know if you have any questions or suggestion regarding the library.
