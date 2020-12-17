@@ -16,7 +16,7 @@ import com.github.dhaval2404.colorpicker.R
 /**
  * Set AlertDialog Button Text Color
  */
-fun AlertDialog.setButtonTextColor(){
+fun AlertDialog.setButtonTextColor() {
     val positiveTextColor = ContextCompat.getColor(context, R.color.positiveButtonTextColor)
     getButton(DialogInterface.BUTTON_POSITIVE)?.setTextColor(positiveTextColor)
 

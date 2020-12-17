@@ -22,6 +22,7 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
     private var isDarkColor = false
     private var color = ""
     private var colorShape = ColorShape.CIRCLE
+    private var isTickColorPerCard = false
 
     init {
         val darkColors = colors.count { ColorUtil.isDarkColor(it) }
@@ -34,6 +35,10 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
 
     fun setDefaultColor(color: String) {
         this.color = color
+    }
+
+    fun setTickColorPerCard(tickColorPerCard: Boolean) {
+        this.isTickColorPerCard = tickColorPerCard
     }
 
     fun getSelectedColor() = color
@@ -80,8 +85,13 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
 
             val isChecked = color == this@MaterialColorPickerAdapter.color
             checkIcon.setVisibility(isChecked)
-            checkIcon.setColorFilter(if (isDarkColor) Color.WHITE else Color.BLACK)
-        }
 
+            var darkColor = isDarkColor
+            if (isTickColorPerCard) {
+                darkColor = ColorUtil.isDarkColor(color)
+            }
+
+            checkIcon.setColorFilter(if (darkColor) Color.WHITE else Color.BLACK)
+        }
     }
 }

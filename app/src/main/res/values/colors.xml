@@ -25,4 +25,18 @@
         <item>#95afc0</item>
     </string-array>
 
+    <string-array name="greyHex">
+        <item>@color/grey_50</item>
+        <item>@color/grey_100</item>
+        <item>@color/grey_200</item>
+        <item>@color/grey_300</item>
+        <item>@color/grey_400</item>
+        <item>@color/grey_500</item>
+        <item>@color/grey_600</item>
+        <item>@color/grey_700</item>
+        <item>@color/grey_800</item>
+        <item>@color/grey_900</item>
+        <item>@color/black</item>
+    </string-array>
+
 </resources>

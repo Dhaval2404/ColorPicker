@@ -1,11 +1,13 @@
 package com.github.dhaval2404.colorpicker
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.github.dhaval2404.colorpicker.adapter.MaterialColorPickerAdapter
 import com.github.dhaval2404.colorpicker.listener.ColorListener
+import com.github.dhaval2404.colorpicker.listener.DismissListener
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.model.ColorSwatch
 import com.github.dhaval2404.colorpicker.util.ColorUtil
@@ -26,10 +28,12 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
     private var positiveButton: String? = null
     private var negativeButton: String? = null
     private var colorListener: ColorListener? = null
+    private var dismissListener: DismissListener? = null
     private var defaultColor: String? = null
     private var colorShape: ColorShape = ColorShape.CIRCLE
     private var colorSwatch: ColorSwatch = ColorSwatch._300
     private var colors: List<String>? = null
+    private var isTickColorPerCard: Boolean = false
 
     companion object {
 
@@ -41,6 +45,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
         private const val EXTRA_COLOR_SHAPE = "extra.color_shape"
         private const val EXTRA_COLOR_SWATCH = "extra.color_swatch"
         private const val EXTRA_COLORS = "extra.colors"
+        private const val EXTRA_IS_TICK_COLOR_PER_CARD = "extra.is_tick_color_per_card"
 
         fun getInstance(dialog: MaterialColorPickerDialog): MaterialColorPickerBottomSheet {
             val bundle = Bundle().apply {
@@ -51,6 +56,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
                 putString(EXTRA_DEFAULT_COLOR, dialog.defaultColor)
                 putParcelable(EXTRA_COLOR_SWATCH, dialog.colorSwatch)
                 putParcelable(EXTRA_COLOR_SHAPE, dialog.colorShape)
+                putBoolean(EXTRA_IS_TICK_COLOR_PER_CARD, dialog.isTickColorPerCard)
 
                 var list: ArrayList<String>? = null
                 if (dialog.colors != null) {
@@ -67,6 +73,11 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
 
     fun setColorListener(listener: ColorListener?): MaterialColorPickerBottomSheet {
         this.colorListener = listener
+        return this
+    }
+
+    fun setDismissListener(listener: DismissListener?): MaterialColorPickerBottomSheet {
+        this.dismissListener = listener
         return this
     }
 
@@ -91,6 +102,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
             colorShape = it.getParcelable(EXTRA_COLOR_SHAPE)!!
 
             colors = it.getStringArrayList(EXTRA_COLORS)
+            isTickColorPerCard = it.getBoolean(EXTRA_IS_TICK_COLOR_PER_CARD)
         }
 
         title?.let { titleTxt.text = it }
@@ -100,6 +112,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
         val colorList = colors ?: ColorUtil.getColors(context!!, colorSwatch.value)
         val adapter = MaterialColorPickerAdapter(colorList)
         adapter.setColorShape(colorShape)
+        adapter.setTickColorPerCard(isTickColorPerCard)
         if (!defaultColor.isNullOrBlank()) {
             adapter.setDefaultColor(defaultColor!!)
         }
@@ -116,5 +129,15 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
             dismiss()
         }
         negativeBtn.setOnClickListener { dismiss() }
+    }
+
+    override fun dismiss() {
+        super.dismiss()
+        dismissListener?.onDismiss()
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        dismissListener?.onDismiss()
     }
 }

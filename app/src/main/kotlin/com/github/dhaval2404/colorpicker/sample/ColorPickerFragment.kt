@@ -3,6 +3,7 @@ package com.github.dhaval2404.colorpicker.sample
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,17 +38,20 @@ class ColorPickerFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val primaryColor = ContextCompat.getColor(context!!, R.color.colorPrimary)
-        mColor = SharedPref(context!!).getRecentColor(primaryColor)
+        val primaryColor = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
+        mColor = SharedPref(requireContext()).getRecentColor(primaryColor)
         colorPickerBtn.setOnClickListener { _ ->
             ColorPickerDialog
-                .Builder(activity!!) // Pass Activity Instance
+                .Builder(requireActivity()) // Pass Activity Instance
                 .setColorShape(ColorShape.SQAURE) // Or ColorShape.CIRCLE
                 .setDefaultColor(mColor) // Pass Default Color
                 .setColorListener { color, _ ->
                     mColor = color
                     colorPickerView.setColor(color)
                     setButtonBackground(colorPickerBtn, color)
+                }
+                .setDismissListener {
+                    Log.d("ColorPickerDialog", "Handle dismiss event")
                 }
                 .show()
         }
