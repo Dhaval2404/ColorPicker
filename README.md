@@ -5,7 +5,7 @@
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 ![Language](https://img.shields.io/badge/language-Kotlin-orange.svg)
 [![PRWelcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Dhaval2404/ColorPicker)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/Dhaval2404/ImagePicker.svg?style=social)](https://twitter.com/intent/tweet?text=Checkout%20the%20ColorPicker%20library%20for%20android.%20https%3A%2F%2Fgithub.com%2FDhaval2404%2FColorPicker%20)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/dhaval2404/colorpicker.svg?style=social)](https://twitter.com/intent/tweet?text=Checkout%20the%20ColorPicker%20library%20for%20android.%20https%3A%2F%2Fgithub.com%2FDhaval2404%2FColorPicker%20)
 
 <div align="center">
   <sub>Built with ❤︎ by
@@ -38,7 +38,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 1. Gradle dependency:
 
 	```groovy
-	implementation 'com.github.dhaval2404:colorpicker:1.2.1'
+	implementation 'com.github.dhaval2404:colorpicker:2.0'
 	```
 
 2. The **ColorPicker** configuration is created using the builder pattern.
@@ -266,13 +266,19 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 
 # ✔️Changelog
 
+### Version: 2.0
+
+  * Added Java compatibility [#8](https://github.com/Dhaval2404/ColorPicker/issues/8)
+  * Added option to set tick color per color card [#12](https://github.com/Dhaval2404/ColorPicker/issues/12)
+  * Added dialog dismiss listener [#13](https://github.com/Dhaval2404/ColorPicker/issues/13)
+
 ### Version: 1.2
 
   * Added Dark mode support & German translation [#4](https://github.com/Dhaval2404/ColorPicker/pull/4)
 
 ### Version: 1.1
 
-  * Added option to change positive and negative button text color [#2](https://github.com/Dhaval2404/ImagePicker/issues/2)
+  * Added option to change positive and negative button text color [#2](https://github.com/Dhaval2404/ColorPicker/issues/2)
 
 ### Version: 1.0
 
