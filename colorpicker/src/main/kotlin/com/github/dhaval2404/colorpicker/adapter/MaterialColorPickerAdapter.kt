@@ -3,7 +3,6 @@ package com.github.dhaval2404.colorpicker.adapter
 import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Chronometer
 import androidx.recyclerview.widget.RecyclerView
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.util.ColorUtil
@@ -94,6 +93,5 @@ class MaterialColorPickerAdapter(private val colors: List<String>) :
 
             checkIcon.setColorFilter(if (darkColor) Color.WHITE else Color.BLACK)
         }
-
     }
 }

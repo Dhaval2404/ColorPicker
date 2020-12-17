@@ -235,7 +235,6 @@ class MaterialColorPickerDialog private constructor(
             return this
         }
 
-
         /**
          * Set tick icon color, Default will be false
          *

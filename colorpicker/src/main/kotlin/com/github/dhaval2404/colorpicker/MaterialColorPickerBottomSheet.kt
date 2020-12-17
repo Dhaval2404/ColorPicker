@@ -140,5 +140,4 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
         super.onCancel(dialog)
         dismissListener?.onDismiss()
     }
-
 }

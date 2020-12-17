@@ -91,8 +91,8 @@ class MaterialColorPickerFragment : Fragment() {
         materialPreDefinedColorPickerBtn.setOnClickListener { _ ->
             MaterialColorPickerDialog
                 .Builder(requireActivity())
-                //.setColors(arrayListOf("#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb", "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"))
-                //.setColors(resources.getStringArray(R.array.themeColorHex))
+                // .setColors(arrayListOf("#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb", "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"))
+                // .setColors(resources.getStringArray(R.array.themeColorHex))
                 .setColorRes(resources.getIntArray(R.array.themeColors))
                 .setDefaultColor(mMaterialPreDefinedColor)
                 .setColorListener(object : ColorListener {
