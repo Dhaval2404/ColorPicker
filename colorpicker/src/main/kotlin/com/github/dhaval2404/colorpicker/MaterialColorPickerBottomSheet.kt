@@ -89,8 +89,8 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.dialog_bottomsheet_material_color_picker, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
             title = it.getString(EXTRA_TITLE)
@@ -109,7 +109,7 @@ class MaterialColorPickerBottomSheet : BottomSheetDialogFragment() {
         positiveButton?.let { positiveBtn.text = it }
         negativeButton?.let { negativeBtn.text = it }
 
-        val colorList = colors ?: ColorUtil.getColors(context!!, colorSwatch.value)
+        val colorList = colors ?: ColorUtil.getColors(requireContext(), colorSwatch.value)
         val adapter = MaterialColorPickerAdapter(colorList)
         adapter.setColorShape(colorShape)
         adapter.setTickColorPerCard(isTickColorPerCard)
