@@ -36,10 +36,9 @@ public class MaterialColorPickerFragmentJava extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View rootView, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(rootView, savedInstanceState);
 
-        View rootView = getView();
         final AppCompatButton materialPreDefinedColorPickerBtn = rootView.findViewById(R.id.materialPreDefinedColorPickerBtn);
         final AppCompatButton materialDialogPickerCircleBtn = rootView.findViewById(R.id.materialDialogPickerCircleBtn);
         final AppCompatButton materialBottomSheetDialogBtn = rootView.findViewById(R.id.materialBottomSheetDialogBtn);

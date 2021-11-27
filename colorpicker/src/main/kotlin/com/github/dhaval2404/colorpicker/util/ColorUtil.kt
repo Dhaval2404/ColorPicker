@@ -3,8 +3,8 @@ package com.github.dhaval2404.colorpicker.util
 import android.content.Context
 import android.graphics.Color
 import androidx.core.graphics.ColorUtils
-import java.util.Collections
 import org.json.JSONObject
+import java.util.Collections
 
 /**
  * Color Utility
@@ -85,10 +85,12 @@ object ColorUtil {
         val green2 = Color.green(color2)
         val blue2 = Color.blue(color2)
 
-        return (red1 >= (red2 - tolerance) &&
+        return (
+            red1 >= (red2 - tolerance) &&
                 red1 <= (red2 + tolerance) &&
                 green1 >= (green2 - tolerance) &&
                 green1 <= (green2 + tolerance) &&
-                blue1 >= (blue2 - tolerance) && blue1 <= (blue2 + tolerance))
+                blue1 >= (blue2 - tolerance) && blue1 <= (blue2 + tolerance)
+            )
     }
 }

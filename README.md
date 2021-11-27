@@ -1,6 +1,6 @@
 # 🎨Color Picker Library for Android
 
-[![Download](https://api.bintray.com/packages/dhaval2404/maven/colorpicker/images/download.svg) ](https://bintray.com/dhaval2404/maven/colorpicker/_latestVersion)
+[![](https://jitpack.io/v/Dhaval2404/ColorPicker.svg)](https://jitpack.io/#Dhaval2404/ColorPicker)
 [![Releases](https://img.shields.io/github/release/dhaval2404/colorpicker/all.svg?style=flat-square)](https://github.com/Dhaval2404/ColorPicker/releases)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 ![Language](https://img.shields.io/badge/language-Kotlin-orange.svg)
@@ -38,7 +38,16 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 1. Gradle dependency:
 
 	```groovy
-	implementation 'com.github.dhaval2404:colorpicker:2.0'
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
+	```
+
+	```groovy
+	implementation 'com.github.Dhaval2404:ColorPicker:2.1'
 	```
 
 2. The **ColorPicker** configuration is created using the builder pattern.
@@ -266,6 +275,10 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 
 # ✔️Changelog
 
+### Version: 2.1
+
+  * Upgrade gradle dependency
+
 ### Version: 2.0
 
   * Added Java compatibility [#8](https://github.com/Dhaval2404/ColorPicker/issues/8)
@@ -296,7 +309,7 @@ We'll be really happy if you sent us links to your projects where you use our co
 
 ## License
 
-    Copyright 2020, Dhaval Patel
+    Copyright 2020-2021, Dhaval Patel
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

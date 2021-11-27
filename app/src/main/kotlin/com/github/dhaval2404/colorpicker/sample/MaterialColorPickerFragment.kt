@@ -38,8 +38,8 @@ class MaterialColorPickerFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_material_color_picker, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         materialDialogPickerSquareBtn.setOnClickListener { _ ->
             MaterialColorPickerDialog
@@ -101,7 +101,7 @@ class MaterialColorPickerFragment : Fragment() {
                         setButtonBackground(materialPreDefinedColorPickerBtn, color)
                     }
                 })
-                .showBottomSheet(requireFragmentManager())
+                .showBottomSheet(childFragmentManager)
         }
     }
 
