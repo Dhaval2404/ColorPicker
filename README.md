@@ -275,13 +275,10 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 
 # ✔️Changelog
 
-### Version: 2.2
-
-  * Added Android 12 support
-
 ### Version: 2.1
 
   * Upgrade gradle dependency
+  * Added Android 12 support
 
 ### Version: 2.0
 
