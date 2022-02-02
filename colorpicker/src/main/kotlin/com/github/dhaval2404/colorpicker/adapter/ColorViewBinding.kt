@@ -51,7 +51,7 @@ object ColorViewBinding {
      * @param colorShape ColorShape Square or Round
      */
     fun setCardRadius(cardView: CardView, colorShape: ColorShape) {
-        if (colorShape == ColorShape.SQAURE) {
+        if (colorShape == ColorShape.SQUARE) {
             val resources = cardView.context.resources
             cardView.radius = resources.getDimension(R.dimen.color_card_square_radius)
         }

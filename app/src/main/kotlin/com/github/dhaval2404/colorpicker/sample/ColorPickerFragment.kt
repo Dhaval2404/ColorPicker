@@ -43,7 +43,7 @@ class ColorPickerFragment : Fragment() {
         colorPickerBtn.setOnClickListener { _ ->
             ColorPickerDialog
                 .Builder(requireActivity()) // Pass Activity Instance
-                .setColorShape(ColorShape.SQAURE) // Or ColorShape.CIRCLE
+                .setColorShape(ColorShape.SQUARE) // Or ColorShape.CIRCLE
                 .setDefaultColor(mColor) // Pass Default Color
                 .setColorListener { color, _ ->
                     mColor = color

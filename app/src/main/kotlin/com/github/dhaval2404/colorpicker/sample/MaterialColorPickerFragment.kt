@@ -44,7 +44,7 @@ class MaterialColorPickerFragment : Fragment() {
         materialDialogPickerSquareBtn.setOnClickListener { _ ->
             MaterialColorPickerDialog
                 .Builder(requireActivity()) // Pass Activity Instance
-                .setColorShape(ColorShape.SQAURE) // Or ColorShape.CIRCLE
+                .setColorShape(ColorShape.SQUARE) // Or ColorShape.CIRCLE
                 .setColorSwatch(ColorSwatch._300) // Default ColorSwatch._500
                 .setDefaultColor(mMaterialColorSquare) // Pass Default Color
                 .setColorListener { color, colorHex ->

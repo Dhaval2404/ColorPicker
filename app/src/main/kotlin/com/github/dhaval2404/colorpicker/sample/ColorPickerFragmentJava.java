@@ -46,7 +46,7 @@ public class ColorPickerFragmentJava extends Fragment {
         mColor = new SharedPref(requireContext()).getRecentColor(primaryColor);
         getView().findViewById(R.id.colorPickerBtn).setOnClickListener(view -> {
             new ColorPickerDialog.Builder(requireActivity())
-                    .setColorShape(ColorShape.SQAURE)
+                    .setColorShape(ColorShape.SQUARE)
                     .setDefaultColor(mColor)
                     .setColorListener(new ColorListener() {
                         @Override
