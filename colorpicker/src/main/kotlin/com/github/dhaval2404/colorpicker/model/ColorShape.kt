@@ -13,5 +13,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 enum class ColorShape : Parcelable {
     CIRCLE,
-    SQAURE
+    SQUARE
 }
