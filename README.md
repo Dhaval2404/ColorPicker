@@ -16,7 +16,7 @@
 </div>
 <br/>
 
-Yet another Color Picker Library for Android. It is highly customizable and easy to use. Pick the color from wheel or select Material Colors from dialog. The original ColorPickerView was written by [Hong Duan](https://github.com/duanhong169/ColorPicker).
+Yet another Color Picker Library for Android. It is highly customizable and easy to use because you can pick the color from wheel or select Material Colors from dialog. The original ColorPickerView was written by [Hong Duan](https://github.com/duanhong169/ColorPicker).
 
 # 🐱‍🏍Features:
 
@@ -57,7 +57,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
     ColorPickerDialog
         .Builder(this)        				// Pass Activity Instance
         .setTitle("Pick Theme")           	// Default "Choose Color"
-        .setColorShape(ColorShape.SQAURE)   // Default ColorShape.CIRCLE
+        .setColorShape(ColorShape.SQUARE)   // Default ColorShape.CIRCLE
         .setDefaultColor(mDefaultColor)     // Pass Default Color
         .setColorListener { color, colorHex ->
         	// Handle Color Selection
@@ -70,7 +70,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
     new ColorPickerDialog
         .Builder(this)
         .setTitle("Pick Theme")
-        .setColorShape(ColorShape.SQAURE)
+        .setColorShape(ColorShape.SQUARE)
         .setDefaultColor(mDefaultColor)
         .setColorListener(new ColorListener() {
             @Override
@@ -89,7 +89,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
     MaterialColorPickerDialog
         .Builder(this)        					// Pass Activity Instance
         .setTitle("Pick Theme")           		// Default "Choose Color"
-        .setColorShape(ColorShape.SQAURE)   	// Default ColorShape.CIRCLE
+        .setColorShape(ColorShape.SQUARE)   	// Default ColorShape.CIRCLE
         .setColorSwatch(ColorSwatch._300)   	// Default ColorSwatch._500
         .setDefaultColor(mDefaultColor) 		// Pass Default Color
         .setColorListener { color, colorHex ->
@@ -103,7 +103,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
     new MaterialColorPickerDialog
         .Builder(this)
         .setTitle("Pick Theme")
-        .setColorShape(ColorShape.SQAURE)
+        .setColorShape(ColorShape.SQUARE)
         .setColorSwatch(ColorSwatch._300)
         .setDefaultColor(mDefaultColor)
         .setColorListener(new ColorListener() {
@@ -175,7 +175,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 	    .show();
       ```
 
-      Where **R.array.themeColors** and **R.array.themeColorHex** are defined as  below
+      Where **R.array.themeColors** and **R.array.themeColorHex** are defined as below
 
       ```xml
       <array name="themeColors">
@@ -250,7 +250,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
         })
         .show();
     ```
- *  You can set the Tick color for each card. This will come handy when color list include black or white colors. By default tick color will be either black or white based on the color darkness. If more dark colors the tick color will be white else black.
+ *  You can set the Tick color for each card. This will come handy when color list include black or white colors. By default, tick color will be either black or white based on the color darkness. If we have more dark colors, the tick color will be white, otherwise, the tick color will be black.
 
 	```kotlin
      // Kotlin Code
@@ -296,7 +296,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 
 ### Version: 1.1
 
-  * Added option to change positive and negative button text color [#2](https://github.com/Dhaval2404/ColorPicker/issues/2)
+  * Added option to change Positive and Negative Button Text Color [#2](https://github.com/Dhaval2404/ColorPicker/issues/2)
 
 ### Version: 1.0
 
