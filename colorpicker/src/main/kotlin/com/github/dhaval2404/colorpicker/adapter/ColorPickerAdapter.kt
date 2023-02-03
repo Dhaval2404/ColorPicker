@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.dhaval2404.colorpicker.listener.ColorListener
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.util.SharedPref
-import kotlinx.android.synthetic.main.adapter_material_color_picker.view.*
+import androidx.cardview.widget.CardView
 
 /**
  * Adapter for Recent Color
@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.adapter_material_color_picker.view.*
  * @version 1.0
  * @since 23 Dec 2019
  */
-class RecentColorAdapter(private val colors: List<String>) :
-    RecyclerView.Adapter<RecentColorAdapter.MaterialColorViewHolder>() {
+class ColorPickerAdapter(private val colors: List<String>) :
+    RecyclerView.Adapter<ColorPickerAdapter.ColorViewHolder>() {
 
     private var colorShape = ColorShape.CIRCLE
     private var colorListener: ColorListener? = null
@@ -45,22 +45,22 @@ class RecentColorAdapter(private val colors: List<String>) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialColorViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorViewHolder {
         val rootView = ColorViewBinding.inflateAdapterItemView(parent)
-        return MaterialColorViewHolder(rootView)
+        return ColorViewHolder(rootView)
     }
 
-    override fun onBindViewHolder(holder: MaterialColorViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ColorViewHolder, position: Int) {
         holder.bind(position)
     }
 
-    inner class MaterialColorViewHolder(private val rootView: View) :
+    inner class ColorViewHolder(private val rootView: View) :
         RecyclerView.ViewHolder(rootView) {
 
-        private val colorView = rootView.colorView
+        private val cardView = rootView as CardView
 
         init {
-            rootView.setOnClickListener {
+            cardView.setOnClickListener {
                 val index = it.tag as Int
                 if (index < colors.size) {
                     val color = getItem(index)
@@ -72,9 +72,9 @@ class RecentColorAdapter(private val colors: List<String>) :
         fun bind(position: Int) {
             val color = getItem(position)
 
-            rootView.tag = position
-            ColorViewBinding.setBackgroundColor(colorView, color)
-            ColorViewBinding.setCardRadius(colorView, colorShape)
+            cardView.tag = position
+            ColorViewBinding.setBackgroundColor(cardView, color)
+            ColorViewBinding.setCardRadius(cardView, colorShape)
         }
     }
 }
