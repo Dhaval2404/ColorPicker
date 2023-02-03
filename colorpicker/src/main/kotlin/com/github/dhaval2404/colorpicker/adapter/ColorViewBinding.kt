@@ -9,7 +9,7 @@ import com.github.dhaval2404.colorpicker.R
 import com.github.dhaval2404.colorpicker.model.ColorShape
 
 /**
- * Common method for {@see RecentColorAdapter and MaterialColorPickerAdapter}
+ * Common method for {@see ColorPickerAdapter and MaterialColorPickerAdapter}
  *
  * @author Dhaval Patel
  * @version 1.0
