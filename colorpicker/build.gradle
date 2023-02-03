@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 8
-        versionName "2.3"
+        versionCode 9
+        versionName "2.31"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -40,9 +40,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'com.google.android.material:material:1.6.0'
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
     testImplementation 'junit:junit:4.13.2'
@@ -63,7 +63,7 @@ ext {
     siteUrl = 'https://github.com/Dhaval2404/ColorPicker/'
     gitUrl = 'https://github.com/Dhaval2404/ColorPicker.git'
 
-    libraryVersion = '2.3'
+    libraryVersion = '2.31'
     //If you are uploading new library try : gradlew install
     //If you are updating existing library then execute: gradlew bintrayUpload
     //In both the case don't forgot to put bintray credentials in local.properties file.
@@ -77,6 +77,6 @@ ext {
     allLicenses = ["Apache-2.0"]
 }
 
-// Place it at the end of the file
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+//// Place it at the end of the file
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

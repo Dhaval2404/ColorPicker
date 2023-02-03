@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/colorView"
+    android:layout_width="@dimen/color_card_size"
+    android:layout_height="@dimen/color_card_size"
+    card_view:cardBackgroundColor="@color/green_300"
+    android:foreground="@drawable/color_rounded_rectangle"
+    card_view:cardCornerRadius="10dp"
+    android:layout_margin="@dimen/color_card_margin"
+    android:elevation="4dp"
+    android:visibility="visible"
+    />

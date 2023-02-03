@@ -9,7 +9,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.github.dhaval2404.colorpicker.adapter.RecentColorAdapter
+import com.github.dhaval2404.colorpicker.adapter.ColorPickerAdapter
 import com.github.dhaval2404.colorpicker.listener.ColorListener
 import com.github.dhaval2404.colorpicker.listener.DismissListener
 import com.github.dhaval2404.colorpicker.model.ColorShape
@@ -17,7 +17,7 @@ import com.github.dhaval2404.colorpicker.util.ColorUtil
 import com.github.dhaval2404.colorpicker.util.SharedPref
 import com.github.dhaval2404.colorpicker.util.setButtonTextColor
 import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.material.card.MaterialCardView
+import androidx.cardview.widget.CardView
 
 /**
  * Color Picker Dialog, Pick Color from Color Dial
@@ -34,7 +34,9 @@ class ColorPickerDialog private constructor(
     val colorListener: ColorListener?,
     val dismissListener: DismissListener?,
     val defaultColor: String?,
-    var colorShape: ColorShape
+    var colorShape: ColorShape,
+    val layout: Int,
+    val colors: List<String>,
 ) {
 
     class Builder(val context: Context) {
@@ -45,6 +47,8 @@ class ColorPickerDialog private constructor(
         private var dismissListener: DismissListener? = null
         private var defaultColor: String? = null
         private var colorShape: ColorShape = ColorShape.CIRCLE
+        private var colors: List<String> = emptyList()
+        private var layout: Int = R.layout.dialog_color_picker
 
         /**
          * Set Dialog Title
@@ -137,6 +141,43 @@ class ColorPickerDialog private constructor(
         }
 
         /**
+         * Set Custom Layout,
+         *
+         * @param layout Layout resource id
+         */
+        fun setLayout(layout: Int): Builder {
+            this.layout = layout
+            return this
+        }
+
+
+        /**
+         * Provide PreDefined Colors,
+         *
+         * If colors is not empty, those colors will be shown instead of recent colors
+         * If colors is empty, recent colors will be shown
+         *
+         * @param colors List<String> List of Hex Colors
+         */
+        fun setColors(colors: List<String>): ColorPickerDialog.Builder {
+            this.colors = colors
+            return this
+        }
+
+        /**
+         * Provide PreDefined Colors,
+         *
+         * If colors is not empty, those colors will be shown instead of recent colors
+         * If colors is empty, recent colors will be shown
+         *
+         * @param colors Array<String> List of Hex Colors
+         */
+        fun setColors(colors: Array<String>): ColorPickerDialog.Builder {
+            this.colors = colors.toList()
+            return this
+        }
+
+        /**
          * Set Color Listener
          *
          * @param listener ColorListener
@@ -201,7 +242,9 @@ class ColorPickerDialog private constructor(
                 colorListener = colorListener,
                 dismissListener = dismissListener,
                 defaultColor = defaultColor,
-                colorShape = colorShape
+                colorShape = colorShape,
+                colors = colors,
+                layout = layout
             )
         }
 
@@ -225,12 +268,12 @@ class ColorPickerDialog private constructor(
 
         // Setup Custom View
         val inflater: LayoutInflater = LayoutInflater.from(context)
-        val dialogView = inflater.inflate(R.layout.dialog_color_picker, null) as View
+        val dialogView = inflater.inflate(layout, null) as View
         dialog.setView(dialogView)
 
-        val colorPicker = dialogView.findViewById<ColorPickerView>(R.id.colorPicker)
-        val colorView = dialogView.findViewById<MaterialCardView>(R.id.colorView)
-        val recentColorsRV = dialogView.findViewById<RecyclerView>(R.id.recentColorsRV)
+        val colorPicker = dialogView.findViewById<ColorPickerView?>(R.id.colorPicker)
+        val colorView = dialogView.findViewById<CardView?>(R.id.colorView)
+        val recentColorsRV = dialogView.findViewById<RecyclerView?>(R.id.recentColorsRV)
 
         val initialColor = if (!defaultColor.isNullOrBlank()) {
             Color.parseColor(defaultColor)
@@ -239,16 +282,19 @@ class ColorPickerDialog private constructor(
         }
         colorView.setCardBackgroundColor(initialColor)
 
-        colorPicker.setColor(initialColor)
-        colorPicker.setColorListener { color, _ ->
+        colorPicker?.setColor(initialColor)
+        colorPicker?.setColorListener { color, _ ->
             colorView.setCardBackgroundColor(color)
         }
 
         val sharedPref = SharedPref(context)
-        val colorList = sharedPref.getRecentColors()
+        var colorList = colors
+        if(colors.isEmpty()) {
+            colorList = sharedPref.getRecentColors()
+        }
 
         // Setup Color Listing Adapter
-        val adapter = RecentColorAdapter(colorList)
+        val adapter = ColorPickerAdapter(colorList)
         adapter.setColorShape(colorShape)
         adapter.setColorListener(object : ColorListener {
             override fun onColorSelected(color: Int, colorHex: String) {
